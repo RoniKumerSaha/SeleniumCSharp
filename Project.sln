@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClashRoyelTests", "ClashRoyelTests\ClashRoyelTests.csproj", "{0B6077D4-4F84-47D8-AC40-2057F018DE4D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Mac = Debug|Mac
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Mac = Release|Mac
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0B6077D4-4F84-47D8-AC40-2057F018DE4D}.Debug|Mac.ActiveCfg = Debug|Mac
+		{0B6077D4-4F84-47D8-AC40-2057F018DE4D}.Debug|Mac.Build.0 = Debug|Mac
+		{0B6077D4-4F84-47D8-AC40-2057F018DE4D}.Debug|x64.ActiveCfg = Debug|Mac
+		{0B6077D4-4F84-47D8-AC40-2057F018DE4D}.Debug|x64.Build.0 = Debug|Mac
+		{0B6077D4-4F84-47D8-AC40-2057F018DE4D}.Debug|x86.ActiveCfg = Debug|Mac
+		{0B6077D4-4F84-47D8-AC40-2057F018DE4D}.Debug|x86.Build.0 = Debug|Mac
+		{0B6077D4-4F84-47D8-AC40-2057F018DE4D}.Release|Mac.ActiveCfg = Release|Mac
+		{0B6077D4-4F84-47D8-AC40-2057F018DE4D}.Release|Mac.Build.0 = Release|Mac
+		{0B6077D4-4F84-47D8-AC40-2057F018DE4D}.Release|x64.ActiveCfg = Release|Mac
+		{0B6077D4-4F84-47D8-AC40-2057F018DE4D}.Release|x64.Build.0 = Release|Mac
+		{0B6077D4-4F84-47D8-AC40-2057F018DE4D}.Release|x86.ActiveCfg = Release|Mac
+		{0B6077D4-4F84-47D8-AC40-2057F018DE4D}.Release|x86.Build.0 = Release|Mac
+	EndGlobalSection
+EndGlobal
