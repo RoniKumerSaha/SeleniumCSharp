@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -16,5 +17,16 @@ namespace ClashRoyelTests.Driver
             _driver.Url = "https://statsroyale.com/";
         }
         public static IWebDriver Current => _driver ?? throw new NullReferenceException("_driver is null.");
+
+        public static IWebElement FindElementBy(By by){
+            return Current.FindElement(by);
+        }
+
+        public static IList<IWebElement> FindElementsBy(By by){
+            return Current.FindElements(by);
+        }
+        public static string GetTitle(){
+            return Current.Title;
+        }
     }
 }

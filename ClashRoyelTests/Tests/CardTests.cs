@@ -25,9 +25,8 @@ namespace ClashRoyelTests
             Assert.AreEqual("Clash Royale Cards", Page.CardsPage.getPageTitle());
         }
 
-        [Test]
+        [Test, Category("simple")]
         // provide test data
-        [TestCase("Balloon")]
         [TestCase("Witch")]
         [TestCase("Rage")]
         public void CardPageCardDetailsTest1(string card)

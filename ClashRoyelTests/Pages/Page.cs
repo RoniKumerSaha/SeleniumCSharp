@@ -9,7 +9,7 @@ namespace ClashRoyelTests.Pages
 
         public static void Init()
         {
-            CardsPage = new CardsPage(Driver.MyWebDriver.Current);
+            CardsPage = new CardsPage();
         }
     }
 }
