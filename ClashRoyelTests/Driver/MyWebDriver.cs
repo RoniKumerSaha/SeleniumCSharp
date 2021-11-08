@@ -5,7 +5,7 @@ using OpenQA.Selenium.Chrome;
 
 namespace ClashRoyelTests.Driver
 {
-    public static class DriverSetup
+    public static class MyWebDriver
     {
         [ThreadStatic]
         private static IWebDriver _driver;
@@ -13,6 +13,7 @@ namespace ClashRoyelTests.Driver
         public static void Init()
         {
             _driver = new ChromeDriver(Path.GetFullPath(@"../../../../../" + "_drivers"));
+            _driver.Url = "https://statsroyale.com/";
         }
         public static IWebDriver Current => _driver ?? throw new NullReferenceException("_driver is null.");
     }

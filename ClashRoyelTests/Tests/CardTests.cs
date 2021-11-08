@@ -1,31 +1,28 @@
-using System.IO;
 using ClashRoyelTests.Driver;
 using ClashRoyelTests.Pages;
 using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 
 namespace ClashRoyelTests
 {
     public class CardTests
     {
-        static string[] cards = { "Balloon", "Hunter", "Mortar", "Fireball"};
+        static string[] cards = { "Balloon", "Hunter"};
         [SetUp]
         public void BeforeEach()
         {
-            DriverSetup.Init();
-            DriverSetup.Current.Url = "https://statsroyale.com/";
-            new CardsPage(DriverSetup.Current).navigation.gotoPage("Cards");
+            MyWebDriver.Init();
+            Page.Init();
+            Page.CardsPage.navigation.gotoPage("Cards");
         }
         [TearDown]
         public void StopDriver(){
-            DriverSetup.Current.Close();
+            MyWebDriver.Current.Close();
         }
 
         [Test]
         public void CardPageTitleVisibleTest()
         {
-            Assert.AreEqual("Clash Royale Cards", new CardsPage(DriverSetup.Current).getPageTitle());
+            Assert.AreEqual("Clash Royale Cards", Page.CardsPage.getPageTitle());
         }
 
         [Test]
@@ -35,10 +32,9 @@ namespace ClashRoyelTests
         [TestCase("Rage")]
         public void CardPageCardDetailsTest1(string card)
         {
-            CardsPage cardsPage = new CardsPage(DriverSetup.Current);
-            Assert.AreEqual("Clash Royale Cards", cardsPage.getPageTitle());
-            cardsPage.selectCardsByName(card);
-            Assert.AreEqual(card, cardsPage.getCardName());            
+            Assert.AreEqual("Clash Royale Cards", Page.CardsPage.getPageTitle());
+            Page.CardsPage.selectCardsByName(card);
+            Assert.AreEqual(card, Page.CardsPage.getCardName());            
         }
 
         // category is like tags
@@ -50,10 +46,9 @@ namespace ClashRoyelTests
         [Parallelizable(ParallelScope.Children)]
         public void CardPageCardDetailsTest2(string card)
         {
-            CardsPage cardsPage = new CardsPage(DriverSetup.Current);
-            Assert.AreEqual("Clash Royale Cards", cardsPage.getPageTitle());
-            cardsPage.selectCardsByName(card);
-            Assert.AreEqual(card, cardsPage.getCardName());            
+            Assert.AreEqual("Clash Royale Cards", Page.CardsPage.getPageTitle());
+            Page.CardsPage.selectCardsByName(card);
+            Assert.AreEqual(card, Page.CardsPage.getCardName());            
         }
     }
 }
