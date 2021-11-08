@@ -1,4 +1,5 @@
 using System.IO;
+using ClashRoyelTests.Driver;
 using ClashRoyelTests.Pages;
 using NUnit.Framework;
 using OpenQA.Selenium;
@@ -8,32 +9,51 @@ namespace ClashRoyelTests
 {
     public class CardTests
     {
-        IWebDriver driver;
-        CardsPage cardsPage;
+        static string[] cards = { "Balloon", "Hunter", "Mortar", "Fireball"};
         [SetUp]
         public void BeforeEach()
         {
-            driver = new ChromeDriver(Path.GetFullPath(@"../../../../../" + "_drivers"));
-            driver.Url = "https://statsroyale.com/";
-            cardsPage = new CardsPage(driver);
-            cardsPage.navigation.gotoPage("Cards");
+            DriverSetup.Init();
+            DriverSetup.Current.Url = "https://statsroyale.com/";
+            new CardsPage(DriverSetup.Current).navigation.gotoPage("Cards");
         }
         [TearDown]
         public void StopDriver(){
-            driver.Close();
+            DriverSetup.Current.Close();
         }
 
         [Test]
         public void CardPageTitleVisibleTest()
         {
-            Assert.AreEqual("Clash Royale Cards", cardsPage.getPageTitle());
+            Assert.AreEqual("Clash Royale Cards", new CardsPage(DriverSetup.Current).getPageTitle());
         }
+
         [Test]
-        public void CardPageCardDetailsTest()
+        // provide test data
+        [TestCase("Balloon")]
+        [TestCase("Witch")]
+        [TestCase("Rage")]
+        public void CardPageCardDetailsTest1(string card)
         {
+            CardsPage cardsPage = new CardsPage(DriverSetup.Current);
             Assert.AreEqual("Clash Royale Cards", cardsPage.getPageTitle());
-            cardsPage.selectCardsByName("Balloon");
-            Assert.AreEqual("Balloon", cardsPage.getCardName());
+            cardsPage.selectCardsByName(card);
+            Assert.AreEqual(card, cardsPage.getCardName());            
+        }
+
+        // category is like tags
+        [Test, Category("Cards")]
+        // run command for category: dotnet test --filter testcategory=Cards
+        // use a single data source
+        [TestCaseSource("cards")]
+        // run tests parallel
+        [Parallelizable(ParallelScope.Children)]
+        public void CardPageCardDetailsTest2(string card)
+        {
+            CardsPage cardsPage = new CardsPage(DriverSetup.Current);
+            Assert.AreEqual("Clash Royale Cards", cardsPage.getPageTitle());
+            cardsPage.selectCardsByName(card);
+            Assert.AreEqual(card, cardsPage.getCardName());            
         }
     }
 }
